@@ -22,7 +22,6 @@ This repository adapts that specification into a reusable workflow specifically 
 
 The following flowchart outlines the exact steps the Habit Tracker took from inception to completion. Notice the human-in-the-loop gates allowing the user to `Approve` or `Retry` code generations and implementation reviews.
 
-![Habit Tracker DOT Flowchart](screenshots/habit_tracker_flowchart.png)
 
 ```dot
 start → research_requirements → review_requirements (human gate)
