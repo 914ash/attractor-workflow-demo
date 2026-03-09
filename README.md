@@ -18,14 +18,6 @@ This repository adapts that specification into a reusable workflow specifically 
 3. **Internal Browser Validation** running true end-to-end (E2E) UI tests natively within the agent loop.
 4. **Systematic Debugging** when tests fail. Rather than blindly retrying an implementation node, the agent is forced to step back and diagnose the error trace first.
 
-## Architecture
-
-The workflow consists of an Execution Engine driving the AI Agent, coordinating with Human Reviews and Test Runners. 
-
-*(Note: Ensure viewing in dark mode for best diagram visibility)*
-
-![Attractor Architecture Layout](screenshots/attractor-architecture.png)
-
 ### The Demo DOT Pipeline Flowchart
 
 The following flowchart outlines the exact steps the Habit Tracker took from inception to completion. Notice the human-in-the-loop gates allowing the user to `Approve` or `Retry` code generations and implementation reviews.
