@@ -8,7 +8,7 @@ This workflow orchestrates multi-stage AI tasks by defining and executing them a
 ## Stage 1: Pipeline Generation (Setup)
 **Goal:** Translate user requirements into a DOT graph and establish the run context.
 1. Read the user's main objective and determine if a pipeline DOT file already exists.
-2. If one does not exist or needs modification, activate the `attractor-generator` skill (`view_file` on `C:\Users\eshli\.gemini\antigravity\skills\attractor-generator\SKILL.md`) to formulate the workflow as a DOT graph in `attractor/pipelines/`.
+2. If one does not exist or needs modification, activate the `attractor-generator` skill to formulate the workflow as a DOT graph in `attractor/pipelines/`.
 3. Validate the DOT pipeline to ensure all edges are logically connected, terminal nodes exist, and it conforms to the Attractor subset of DOT syntax.
 4. Create a run directory `attractor/runs/<run_id>/` and initialize a `context.md` file to track state, variables, and context.
 
