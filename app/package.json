@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "vitest run",
+    "dev": "python -m http.server 8080"
+  },
+  "devDependencies": {
+    "jsdom": "^28.1.0",
+    "vitest": "^4.0.18"
+  }
+}
