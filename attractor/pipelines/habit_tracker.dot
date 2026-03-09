@@ -1,0 +1,126 @@
+digraph "Habit Tracker Pipeline" {
+
+  // Node defaults
+  node [
+      shape=box
+      style="filled,rounded"
+      fillcolor="#f8f9fa"
+      fontname="Helvetica"
+      fontsize=10
+  ];
+
+  // Edge defaults
+  edge [
+      fontname="Helvetica"
+      fontsize=9
+  ];
+
+  start [
+      shape=Mdiamond
+      fillcolor="#e0f2f1"
+      class=start
+  ];
+
+  /* 
+   * Stage 1: Discovery and Planning 
+   */
+  research_requirements [
+      label="Research and Outline\nHabit Tracker Features"
+      class=codergen
+      prompt="Based on the project context, research best practices for local-first habit trackers and outline the required features (e.g., daily check-ins, streaks, local storage). Save this to a requirements.md file."
+  ];
+
+  review_requirements [
+      label="User Review: Requirements"
+      class=wait_for_human
+      prompt="Please review the generated requirements.md file. Does this cover the features you want for the Habit Tracker?"
+      options="Approve, Retry"
+  ];
+
+  /* 
+   * Stage 2: Implementation of Core Logic 
+   */
+  implement_storage [
+      label="Implement Local Storage Logic"
+      class=codergen
+      prompt="Implement the data storage layer for the habit tracker using local storage. This should include functions to add a habit, mark a habit as complete for a specific date, and calculate current streaks."
+  ];
+
+  implement_ui [
+      label="Implement UI"
+      class=codergen
+      prompt="Implement the frontend for the habit tracker. Add components for a Habit List, a form to add new habits, and a visual representation of streaks. Use a clean, modern dark-mode UI."
+  ];
+  
+  /* 
+   * Stage 3: Testing and TDD 
+   */
+  run_tests [
+      label="Run Test Suite"
+      class=bash
+      command="npm test"
+  ];
+
+  run_browser_test [
+      label="Browser End-to-End Test"
+      class=codergen
+      prompt="Run the application locally. Then, use the browser agent to interact with the Habit Tracker app at the local dev URL. The agent task should be: 'Navigate to the app. Add a habit named Drink Water. Mark it as completed. Verify the UI updates to show the habit is completed and the streak is 1. Take a screenshot.' Evaluate if the test was successful based on the agent output."
+  ];
+
+  review_implementation [
+      label="User Review: Implementation"
+      class=wait_for_human
+      prompt="The core logic, UI, and browser tests have been completed. Please review the application. Does it function as expected?"
+      options="Approve, Request Changes"
+  ];
+
+  /* 
+   * Stage 4: Finalization
+   */
+  generate_walkthrough [
+      label="Generate Walkthrough"
+      class=codergen
+      prompt="Create a walkthrough.md file documenting the completed habit tracker features, the architecture implemented, and how to run the application."
+  ];
+
+  success [
+      shape=doublecircle
+      fillcolor="#c8e6c9"
+      class=exit
+      status=success
+  ];
+
+  fail [
+      shape=doublecircle
+      fillcolor="#ffcdd2"
+      class=exit
+      status=error
+  ];
+
+  // Pipeline flow
+  start -> research_requirements;
+  
+  research_requirements -> review_requirements [label="success"];
+  research_requirements -> fail [label="error"];
+
+  review_requirements -> implement_storage [label="Approve"];
+  review_requirements -> research_requirements [label="Retry"];
+  
+  implement_storage -> implement_ui [label="success"];
+  implement_storage -> fail [label="error"];
+
+  implement_ui -> run_tests [label="success"];
+  implement_ui -> fail [label="error"];
+
+  run_tests -> run_browser_test [label="success"];
+  run_tests -> implement_storage [label="error"];
+  
+  run_browser_test -> review_implementation [label="success"];
+  run_browser_test -> fail [label="error"];
+
+  review_implementation -> generate_walkthrough [label="Approve"];
+  review_implementation -> implement_storage [label="Request Changes"]; 
+
+  generate_walkthrough -> success [label="success"];
+  generate_walkthrough -> fail [label="error"];
+}
