@@ -1,30 +1,30 @@
-# Attractor Workflow Demo
+# Attractor workflow demo
 
-Attractor Workflow Demo is a methodology repo that shows how a DOT-defined AI workflow can move from requirements capture through implementation, testing, and browser validation on a small end-to-end app.
+Attractor Workflow Demo shows how a DOT-defined AI workflow moves from requirements capture to implementation, testing and browser validation.
 
-The bundled demo application is a minimalist habit tracker generated and validated through that workflow.
+The bundled app is a minimalist habit tracker generated and checked through that workflow.
 
 ![Habit Tracker completed state](screenshots/habit-tracker-completed.png)
 
 - **Status:** Demo repo
 - **Stack:** Graphviz DOT workflow assets, JavaScript app, Vitest, workflow skills
-- **Problem:** Agentic coding workflows become difficult to review when task boundaries, review gates, and failure handling are left implicit.
+- **Problem:** Agentic coding workflows are hard to review when task boundaries, review gates and failure handling stay implicit.
 
-## What This Repo Demonstrates
+## What this repo demonstrates
 
 - Pipeline generation from natural-language requirements
 - Explicit node-to-node context tracking
 - Browser validation inside the workflow loop
 - Systematic debugging after test failures instead of blind retries
 
-## Repository Layout
+## Repository layout
 
 - `app/`: habit-tracker application used as the demonstration target
 - `attractor/`: pipeline definition and run artifacts
 - `workflow/`: reusable workflow and generator skill assets
 - `docs/`: generated requirements and supporting notes
 
-## Run The Demo App
+## Run the demo app
 
 ```bash
 cd app
@@ -34,16 +34,16 @@ npm run dev
 
 Then open the local URL printed by the dev server.
 
-## Run Tests
+## Run tests
 
 ```bash
 cd app
 npm test
 ```
 
-## Why This Repo Stays Public
+## Why this repo stays public
 
-This project is narrower than the main featured systems, but it is still useful as a compact example of graph-defined AI workflow orchestration with explicit review gates and browser validation.
+This project is narrower than the main featured systems. It remains useful as a compact example of graph-defined AI workflow orchestration with explicit review gates and browser validation.
 
 ## Attribution
 
